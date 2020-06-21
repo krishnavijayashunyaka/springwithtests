@@ -1,4 +1,4 @@
-buildpack: maven 
+buildPack: maven 
 pipelineConfig:
   pipelines:
     pullrequest:
