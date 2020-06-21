@@ -1,0 +1,27 @@
+buildpack: maven 
+pipelineConfig:
+  pipelines:
+    pullrequest:
+      build:
+        steps:
+        - sh: date
+          name: datedisplay
+        - sh: echo '&&&&&&&&&&&&& pullrequest build  this is custom step in jenkins-x &&&&&&&&&&&&&&'
+          name: custombuildstep
+      prebuild:
+        steps:
+        - sh: echo '&&&&&&&&&&&&& pullrequest prebuild this is custom step in prebuild lifecycle &&&&&&&&&&&&&&'
+          name: prebuildcustomstep
+    release:
+      build:
+        steps:
+        - sh: date
+          name: datedisplay
+        - sh: echo '&&&&&&&&&&&&& release build  this is custom step in jenkins-x &&&&&&&&&&&&&&'
+          name: custombuildstep
+      prebuild:
+        steps:
+        - sh: echo '&&&&&&&&&&&&& release prebuild this is custom step in prebuild lifecycle &&&&&&&&&&&&&&'
+          name: prebuildcustomstep
+
+ 
