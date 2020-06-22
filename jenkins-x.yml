@@ -1,27 +1,19 @@
 buildPack: maven 
 pipelineConfig:
   pipelines:
-    pullrequest:
+    pullRequest:
       build:
         steps:
-        - sh: date
-          name: datedisplay
-        - sh: echo '&&&&&&&&&&&&& pullrequest build  this is custom step in jenkins-x &&&&&&&&&&&&&&'
-          name: custombuildstep
-      prebuild:
-        steps:
-        - sh: echo '&&&&&&&&&&&&& pullrequest prebuild this is custom step in prebuild lifecycle &&&&&&&&&&&&&&'
-          name: prebuildcustomstep
-    release:
-      build:
-        steps:
-        - sh: date
-          name: datedisplay
-        - sh: echo '&&&&&&&&&&&&& release build  this is custom step in jenkins-x &&&&&&&&&&&&&&'
-          name: custombuildstep
-      prebuild:
-        steps:
-        - sh: echo '&&&&&&&&&&&&& release prebuild this is custom step in prebuild lifecycle &&&&&&&&&&&&&&'
-          name: prebuildcustomstep
-
- 
+        - name: sonar-scan-pr
+          command: sonar-scanner
+          image: newtmitch/sonar-scanner:3.0 # fabiopotame/sonar-scanner-cli:latest for JDK8?
+          dir: /workspace/source/
+          args:
+            - -Dsonar.projectName=jx-qs-spring-boot
+            - -Dsonar.projectKey=jx-qs-spring-boot
+            - -Dsonar.organization=joostvdg-github
+            - -Dsonar.sources=/workspace/source/src/main/java/
+            - -Dsonar.language=java
+            - -Dsonar.java.binaries=./target/classes
+            - -Dsonar.host.url=https://sonarcloud.io
+            - -Dsonar.login=bebe633ad6599cbf52f7e0b9ee1bc2bbd3cd9c80
