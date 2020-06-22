@@ -15,5 +15,5 @@ pipelineConfig:
             - -Dsonar.sources=/workspace/source/src/main/java/
             - -Dsonar.language=java
             - -Dsonar.java.binaries=./target/classes
-            - -Dsonar.host.url=https://sonarcloud.io
-            - -Dsonar.login=bebe633ad6599cbf52f7e0b9ee1bc2bbd3cd9c80
+            - -Dsonar.host.url=http://18.210.22.128:9000
+            - -Dsonar.login=b10eff7e52549ebc35913e637475b411d186d469
