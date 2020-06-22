@@ -38,7 +38,7 @@ public class StudentControllerTest {
 			Arrays.asList("Learn Maven", "Import Project", "First Example",
 					"Second Example"));
 
-	String exampleCourseJson = "{\"name\":\"Spring\",\"description\":\"10Steps\",\"steps\":[\"Learn Maven\",\"Import Project\",\"First Example\",\"Second Example\"]}";
+	String exampleCourseJson = "{\"name\":\"SpringBoot\",\"description\":\"10Steps\",\"steps\":[\"Learn Maven\",\"Import Project\",\"First Example\",\"Second Example\"]}";
 
 	@Test
 	public void retrieveDetailsForCourse() throws Exception {
@@ -84,7 +84,7 @@ public class StudentControllerTest {
 
 		assertEquals(HttpStatus.CREATED.value(), response.getStatus());
 
-		assertEquals("http://localhost/students/Student1/courses/1",
+		assertEquals("http://localhost/students/Student1/courses/",
 				response.getHeader(HttpHeaders.LOCATION));
 
 	}
