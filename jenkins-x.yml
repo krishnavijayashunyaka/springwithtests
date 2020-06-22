@@ -5,15 +5,4 @@ pipelineConfig:
       build:
         steps:
         - name: sonar-scan-pr
-          command: sonar-scanner
-          image: newtmitch/sonar-scanner:3.0 # fabiopotame/sonar-scanner-cli:latest for JDK8?
-          dir: /workspace/source/
-          args:
-            - -Dsonar.projectName=jx-qs-spring-boot
-            - -Dsonar.projectKey=jx-qs-spring-boot
-            - -Dsonar.organization=joostvdg-github
-            - -Dsonar.sources=/workspace/source/src/main/java/
-            - -Dsonar.language=java
-            - -Dsonar.java.binaries=./target/classes
-            - -Dsonar.host.url=http://18.210.22.128:9000
-            - -Dsonar.login=b10eff7e52549ebc35913e637475b411d186d469
+          sh:  mvn sonar:sonar -Dsonar.host.url=http://18.210.22.128:9000 -Dsonar.login=b10eff7e52549ebc35913e637475b411d186d469 
